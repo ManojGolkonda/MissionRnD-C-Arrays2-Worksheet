@@ -15,13 +15,37 @@ NOTES:
 */
 
 #include <iostream>
+#include<stdlib.h>
+#include<string.h>
 
-struct transaction {
+struct transaction 
+{
 	int amount;
 	char date[11];
 	char description[20];
 };
 
-struct transaction * sortedArraysCommonElements(struct transaction *A, int ALen, struct transaction *B, int BLen) {
-	return NULL;
+
+struct transaction * sortedArraysCommonElements(struct transaction *A, int ALen, struct transaction *B, int BLen) 
+{
+	struct transaction *result = NULL;
+	if (A != NULL && B != NULL)
+	{
+		int count = -1;
+		for (int i = 0; i < ALen; i++)
+		{
+			for (int j = 0; j < BLen; j++)
+			{
+				if (!(strcmp(A[i].date,B[j].date)))
+				{
+					count++;
+					result = (struct transaction *)realloc(result, sizeof(struct transaction)*(count + 1));
+					result[count] = A[i];
+					break;
+				}
+			}
+
+		}
+	}
+	return result;
 }
