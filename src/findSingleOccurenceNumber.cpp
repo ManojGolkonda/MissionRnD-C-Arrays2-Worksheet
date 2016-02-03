@@ -13,6 +13,20 @@ ERROR CASES: Return -1 for invalid inputs.
 NOTES:
 */
 
-int findSingleOccurenceNumber(int *A, int len) {
+int findSingleOccurenceNumber(int *A, int len) 
+{
+	if (A != nullptr && len > 0)
+	{
+		int ones = 0, twos = 0, non_threes;
+		for (int i = 0; i < len; i++)
+		{
+			twos = twos | (ones & A[i]);
+			ones = ones ^ A[i];
+			non_threes = ~(ones & twos);
+			ones = ones & non_threes;
+			twos = twos & non_threes;
+		}
+		return ones;
+	}
 	return -1;
 }
