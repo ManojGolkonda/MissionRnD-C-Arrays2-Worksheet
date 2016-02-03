@@ -86,7 +86,7 @@ struct transaction * mergeSortedArrays(struct transaction *A, int ALen, struct t
 		}
 		while (j<BLen)
 		{
-			result[k] = A[j];
+			result[k] = B[j];
 			j++;
 			k++;
 		}
